@@ -20,7 +20,13 @@
   
 
 //Code Here
-
+let user = {
+  username: "SabrinaM",
+  email: "matin.sabrina@gmail.com",
+  getUsername: function(){
+    return this.username;
+  }
+}
 
 
 ////////// PROBLEM 2 //////////
@@ -42,7 +48,7 @@ class Animal {
 }
 
 //Code Here
-
+let animal1 = new Animal  ("arya");
 
 
 ////////// PROBLEM 3 //////////
@@ -62,7 +68,7 @@ let who = {
 }
 
 //Code Here
-
+let whoSaysHi = sayHi.bind(who)
 
 
 ////////// PROBLEM 4 //////////
@@ -76,6 +82,7 @@ function whatIsThis() {
 }
 
 //Code Here
+let context1 = window
 
 // uncomment the line below and tell us what the context of "this" is for whatIsThis()
 //let context1 = ???

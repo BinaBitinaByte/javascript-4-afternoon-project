@@ -1,4 +1,4 @@
-/* 
+/*
   Once you complete a problem, refresh ./classes.html in your browser and check to see if the problem's test(s) are passing.
   Passed tests will be indicated by a green circle.
   Failed tests will be indicated by a red X.
@@ -12,7 +12,7 @@
   You work for Widget Co. They have hundreds of employees.
 */
 
-////////// PROBLEM 1 //////////
+/// /////// PROBLEM 1 //////////
 
 /*
   Make a class to help us build all of the employees.
@@ -29,10 +29,19 @@
   Call your class Employee and receive all the data in the constructor in the order listed above.
 */
 
-//Code Here
+class Employee {
+  constructor (first_name, last_name, email, age) {
+    this.first_name = first_name
+    this.last_name = last_name
+    this.email = email
+    this.age = age
+  }
+  makeWidget () {
+    return this.first_name + ' ' + this.last_name + ' ' + 'Widget'
+  }
+}
 
-
-////////// PROBLEM 2 //////////
+/// /////// PROBLEM 2 //////////
 
 /*
   Next, make a manager for Widget Co. that extends Employee
@@ -47,10 +56,21 @@
   Call your new class Manager
 */
 
-//Code Here
+class Manager extends Employee {
+  constructor (first_name, last_name, email, age) {
+    super(first_name, last_name, email, age)
 
+    this.reports = []
+  }
+  hire (employee) {
+    return this.reports.push(employee)
+  }
+  fire (index) {
+    return this.reports.splice(index, 1)
+  }
+}
 
-////////// PROBLEM 3 //////////
+/// /////// PROBLEM 3 //////////
 
 /*
   Managers for Widget Co. get promoted when they get more employees, and get a bonus when they fire employees.
@@ -70,12 +90,33 @@
 
   Call your new class ProgressiveManager
 */
+class ProgressiveManager extends Manager {
+  constructor (first_name, last_name, email, age, reports, title, bonus) {
+    super(first_name, last_name, email, age, reports)
+    this.title = 'Not a manager'
+    this.bonus = 0
+  }
+  hire (employee) {
+    super.hire(employee)
 
-//Code Here
+    if (this.reports.length === 0) {
+      return (this.title = 'Not a manager')
+    } else if (this.reports.length > 0 && this.reports.length <= 3) {
+      return (this.title = 'Barely Manager')
+    } else if (this.reports.length >= 4 && this.reports.length <= 10) {
+      return (this.title = 'Mostly Manager')
+    } else if (this.reports.length >= 11 && this.reports.length <= 50) {
+      return (this.title = 'Manager')
+    } else if (this.reports.length >= 51 && this.reports.length <= 100) {
+      return (this.title = 'Manager Plus')
+    } else if (this.reports.length > 100) {
+      return (this.title = 'Bestest Manager')
+    }
+    return this.reports
+  }
+}
 
-
-
-////////// PROBLEM 4 - Black Diamond //////////
+/// /////// PROBLEM 4 - Black Diamond //////////
 
 /*
   Widget Co has a factory that makes widgets.
@@ -98,6 +139,4 @@
         - The anonymous function should decrease wear_and_tear_count by 10, and set needs_reboot to false
 */
 
-//Code Here
-
-
+// Code Here
