@@ -112,9 +112,15 @@ class ProgressiveManager extends Manager {
     } else if (this.reports.length > 100) {
       return (this.title = 'Bestest Manager')
     }
-    return this.reports
   }
-}
+    fire(index){
+      this.reports.splice(index,1);
+      this.bonus += 100;
+      }
+    }
+   
+  
+
 
 /// /////// PROBLEM 4 - Black Diamond //////////
 
